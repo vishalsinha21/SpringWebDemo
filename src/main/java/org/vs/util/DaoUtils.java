@@ -1,4 +1,4 @@
-package util;
+package org.vs.util;
 
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;

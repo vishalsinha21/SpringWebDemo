@@ -1,6 +1,5 @@
 package org.vs.dao;
 
-import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -9,11 +8,10 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.vs.domain.Employee;
-import util.DaoUtils;
+import org.vs.util.DaoUtils;
 
 import javax.sql.DataSource;
 import java.math.BigInteger;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
