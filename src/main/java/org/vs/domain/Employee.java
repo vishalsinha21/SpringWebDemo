@@ -1,5 +1,7 @@
 package org.vs.domain;
 
+import org.joda.time.LocalDate;
+
 import java.math.BigInteger;
 import java.util.Date;
 
@@ -9,6 +11,7 @@ public class Employee {
     private String firstName;
     private String lastName;
     private String phone;
+    private LocalDate joiningDate;
 
     public BigInteger getEmployeeId() {
         return employeeId;
@@ -42,4 +45,11 @@ public class Employee {
         this.phone = phone;
     }
 
+    public LocalDate getJoiningDate() {
+        return joiningDate;
+    }
+
+    public void setJoiningDate(LocalDate joiningDate) {
+        this.joiningDate = joiningDate;
+    }
 }

@@ -37,6 +37,9 @@ public class EmployeeDaoImplTest {
         Employee result = employeeDao.getEmployeeById(BigInteger.ONE);
 
         assertEquals(employee.getEmployeeId(), result.getEmployeeId());
+        assertEquals(employee.getFirstName(), result.getFirstName());
+        assertEquals(employee.getJoiningDate().toString(), result.getJoiningDate().toString());
+
     }
 
     @Test(expected = DuplicateKeyException.class)
