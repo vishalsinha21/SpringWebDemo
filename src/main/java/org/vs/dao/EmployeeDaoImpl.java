@@ -49,6 +49,16 @@ public class EmployeeDaoImpl {
         return jdbcTemplate.queryForObject(SQL, new EmployeeRowMapper(), employeeId.longValue());
     }
 
+    public void updatePhoneForEmpId(BigInteger employeeId, String phoneNo) {
+        String SQL = "UPDATE Employee set phone = ? where employeeId = ?";
+        jdbcTemplate.update(SQL, phoneNo, employeeId.longValue());
+    }
+
+    public void deleteEmployee(BigInteger employeeId) {
+        String SQL = "DELETE from Employee where employeeId = ?";
+        jdbcTemplate.update(SQL, employeeId.longValue());
+    }
+
     private class EmployeeRowMapper implements RowMapper<Employee> {
         @Override
         public Employee mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -57,7 +67,7 @@ public class EmployeeDaoImpl {
             employee.setFirstName(rs.getString("FirstName"));
             employee.setLastName(rs.getString("LastName"));
             employee.setPhone(rs.getString("Phone"));
-            employee.setJoiningDate(new LocalDate(rs.getDate("JoiningDate")));
+            employee.setJoiningDate(DaoUtils.sqlTimestampToJodaDateTime(rs.getDate("JoiningDate")));
             return employee;
         }
     }

@@ -18,6 +18,10 @@ public final class DaoUtils {
         return date == null ? null : new DateTime(date);
     }
 
+    public static LocalDate sqlTimestampToJodaDateTime(Date date) {
+        return date == null ? null : new LocalDate(date);
+    }
+
     public static Date convertToDateOrNull(DateTime date) {
         return date == null ? null : new Date(date.getMillis());
     }

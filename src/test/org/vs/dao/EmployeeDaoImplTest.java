@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,11 +26,6 @@ public class EmployeeDaoImplTest {
     @Autowired
     private EmployeeDaoImpl employeeDao;
 
-    @Before
-    public void setUp() throws Exception {
-
-    }
-
     @Test
     public void should_create_and_get_employee() {
         Employee employee = ObjectMotherEmployee.getEmployee(BigInteger.ONE);
@@ -38,8 +34,9 @@ public class EmployeeDaoImplTest {
 
         assertEquals(employee.getEmployeeId(), result.getEmployeeId());
         assertEquals(employee.getFirstName(), result.getFirstName());
+        assertEquals(employee.getLastName(), result.getLastName());
+        assertEquals(employee.getPhone(), result.getPhone());
         assertEquals(employee.getJoiningDate().toString(), result.getJoiningDate().toString());
-
     }
 
     @Test(expected = DuplicateKeyException.class)
@@ -49,5 +46,26 @@ public class EmployeeDaoImplTest {
         employeeDao.createEmployee(employee);
     }
 
+    @Test
+    public void should_update_phone_for_employee_id() {
+        Employee employee = ObjectMotherEmployee.getEmployee(BigInteger.ONE);
+        String newPhoneNo = "9837 1983";
+        employeeDao.createEmployee(employee);
+        employeeDao.updatePhoneForEmpId(BigInteger.ONE, newPhoneNo);
+        Employee result = employeeDao.getEmployeeById(BigInteger.ONE);
 
+        assertEquals(employee.getEmployeeId(), result.getEmployeeId());
+        assertEquals(employee.getFirstName(), result.getFirstName());
+        assertEquals(employee.getLastName(), result.getLastName());
+        assertEquals(newPhoneNo, result.getPhone());
+        assertEquals(employee.getJoiningDate().toString(), result.getJoiningDate().toString());
+    }
+
+    @Test(expected = EmptyResultDataAccessException.class)
+    public void should_throw_empty_result_exception_when_retrieving_deleted_employee() {
+        Employee employee = ObjectMotherEmployee.getEmployee(BigInteger.ONE);
+        employeeDao.createEmployee(employee);
+        employeeDao.deleteEmployee(BigInteger.ONE);
+        employeeDao.getEmployeeById(BigInteger.ONE);
+    }
 }
