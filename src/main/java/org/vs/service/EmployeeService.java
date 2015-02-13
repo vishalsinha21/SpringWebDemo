@@ -1,11 +1,13 @@
 package org.vs.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.vs.dao.EmployeeDaoImpl;
 import org.vs.domain.Employee;
 
 import java.math.BigInteger;
 
+@Service
 public class EmployeeService {
 
     private final EmployeeDaoImpl employeeDaoImpl;
