@@ -13,6 +13,7 @@ import org.vs.domain.Employee;
 import org.vs.domain.ObjectMotherEmployee;
 
 import java.math.BigInteger;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -30,6 +31,7 @@ public class EmployeeDaoImplTest {
     public void should_create_and_get_employee() {
         Employee employee = ObjectMotherEmployee.getEmployee(BigInteger.ONE);
         employeeDao.createEmployee(employee);
+
         Employee result = employeeDao.getEmployeeById(BigInteger.ONE);
 
         assertEquals(employee.getEmployeeId(), result.getEmployeeId());
@@ -51,7 +53,9 @@ public class EmployeeDaoImplTest {
         Employee employee = ObjectMotherEmployee.getEmployee(BigInteger.ONE);
         String newPhoneNo = "9837 1983";
         employeeDao.createEmployee(employee);
+
         employeeDao.updatePhoneForEmpId(BigInteger.ONE, newPhoneNo);
+
         Employee result = employeeDao.getEmployeeById(BigInteger.ONE);
 
         assertEquals(employee.getEmployeeId(), result.getEmployeeId());
@@ -65,7 +69,23 @@ public class EmployeeDaoImplTest {
     public void should_throw_empty_result_exception_when_retrieving_deleted_employee() {
         Employee employee = ObjectMotherEmployee.getEmployee(BigInteger.ONE);
         employeeDao.createEmployee(employee);
+
         employeeDao.deleteEmployee(BigInteger.ONE);
+
         employeeDao.getEmployeeById(BigInteger.ONE);
+    }
+
+    @Test
+    public void should_create_and_get_all_employees() {
+        Employee employee1 = ObjectMotherEmployee.getEmployee(BigInteger.valueOf(1));
+        Employee employee2 = ObjectMotherEmployee.getEmployee(BigInteger.valueOf(2));
+        Employee employee3 = ObjectMotherEmployee.getEmployee(BigInteger.valueOf(3));
+        employeeDao.createEmployee(employee1);
+        employeeDao.createEmployee(employee2);
+        employeeDao.createEmployee(employee3);
+
+        List<Employee> empList = employeeDao.getAllEmployees();
+
+        assertEquals(3, empList.size());
     }
 }

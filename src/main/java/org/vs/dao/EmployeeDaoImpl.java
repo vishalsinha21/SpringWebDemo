@@ -14,6 +14,7 @@ import javax.sql.DataSource;
 import java.math.BigInteger;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 @Repository
 public class EmployeeDaoImpl {
@@ -55,6 +56,11 @@ public class EmployeeDaoImpl {
     public void deleteEmployee(BigInteger employeeId) {
         String SQL = "DELETE from Employee where employeeId = ?";
         jdbcTemplate.update(SQL, employeeId.longValue());
+    }
+
+    public List<Employee> getAllEmployees() {
+        String SQL = "SELECT * FROM Employee";
+        return jdbcTemplate.query(SQL, new EmployeeRowMapper());
     }
 
     private class EmployeeRowMapper implements RowMapper<Employee> {
