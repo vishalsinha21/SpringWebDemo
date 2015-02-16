@@ -8,6 +8,8 @@ import org.vs.domain.Employee;
 import org.vs.domain.ObjectMotherEmployee;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.times;
@@ -64,6 +66,23 @@ public class EmployeeServiceTest {
         employeeService.deleteEmployee(BigInteger.ONE);
 
         verify(employeeDaoMock).deleteEmployee(BigInteger.ONE);
+    }
+
+    @Test
+    public void should_get_all_employees() throws Exception {
+        Employee employee1 = ObjectMotherEmployee.getEmployee(BigInteger.valueOf(1));
+        Employee employee2 = ObjectMotherEmployee.getEmployee(BigInteger.valueOf(2));
+        Employee employee3 = ObjectMotherEmployee.getEmployee(BigInteger.valueOf(3));
+        List<Employee> employeeList = new ArrayList<Employee>();
+        employeeList.add(employee1);
+        employeeList.add(employee2);
+        employeeList.add(employee3);
+
+        when(employeeDaoMock.getAllEmployees()).thenReturn(employeeList);
+
+        List result = employeeService.getAllEmployees();
+
+        assertEquals(employeeList.size(), result.size());
     }
 
 }

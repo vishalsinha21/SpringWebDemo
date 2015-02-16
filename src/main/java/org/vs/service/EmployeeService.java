@@ -6,6 +6,7 @@ import org.vs.dao.EmployeeDaoImpl;
 import org.vs.domain.Employee;
 
 import java.math.BigInteger;
+import java.util.List;
 
 @Service
 public class EmployeeService {
@@ -31,5 +32,9 @@ public class EmployeeService {
 
     public void deleteEmployee(BigInteger employeeId) {
         employeeDaoImpl.deleteEmployee(employeeId);
+    }
+
+    public List<Employee> getAllEmployees() {
+        return employeeDaoImpl.getAllEmployees();
     }
 }
