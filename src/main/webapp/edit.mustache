@@ -1,0 +1,17 @@
+<div>
+    {{#user}}
+        <form class="edit-user-form">
+            <legend>Edit User</legend>
+            <label>First Name</label>
+            <input name="firstname" type="text" value="{{firstname}}"/>
+            <label>Last Name</label>
+            <input name="lastname" type="text" value="{{lastname}}"/>
+            <label>Age</label>
+            <input name="age" type="text" value="{{age}}"/>
+            <hr/>
+            <button type="submit" class="btn">Update</button>
+            <input type="hidden" name="id" value="{{id}}"/>
+            <button data-user-id="{{id}}" class="btn btn-danger delete">Delete</button>
+        </form>
+    {{/user}}
+</div>
