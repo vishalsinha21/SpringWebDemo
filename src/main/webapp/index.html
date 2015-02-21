@@ -11,7 +11,7 @@
 
 <div class="container">
     <h1>User Manager</h1>
-    <hr />
+    <hr/>
     <div class="page"></div>
 </div>
 
@@ -22,22 +22,22 @@
 
 
 <script>
-    function htmlEncode(value){
+    function htmlEncode(value) {
         return $('<div/>').text(value).html();
     }
 
-    function renderTemplate(template, model, el){
-        $.get(template, function(doc) {
+    function renderTemplate(template, model, el) {
+        $.get(template, function (doc) {
             templateString = doc.documentElement.innerHTML
             var rendered = Mustache.render(templateString, model);
             el.html(rendered);
         });
     }
 
-    $.fn.serializeObject = function() {
+    $.fn.serializeObject = function () {
         var o = {};
         var a = this.serializeArray();
-        $.each(a, function() {
+        $.each(a, function () {
             if (o[this.name] !== undefined) {
                 if (!o[this.name].push) {
                     o[this.name] = [o[this.name]];
@@ -84,7 +84,7 @@
             var user = new User();
             user.save(userDetails, {
                 success: function (user) {
-                    router.navigate('', {trigger:true});
+                    router.navigate('', {trigger: true});
                 }
             });
             return false;
@@ -93,20 +93,18 @@
             this.user.destroy({
                 success: function () {
                     console.log('destroyed');
-                    router.navigate('', {trigger:true});
+                    router.navigate('', {trigger: true});
                 }
             });
             return false;
         },
         render: function (options) {
             var that = this;
-            if(options.id) {
+            if (options.id) {
                 that.user = new User({id: options.id});
                 that.user.fetch({
                     success: function (user) {
                         renderTemplate('edit.mustache', {user: user.toJSON()}, that.$el);
-//                        var template = _.template($('#edit-user-template').html(), {user: user});
-//                        that.$el.html(template);
                     }
                 })
             } else {
@@ -126,11 +124,11 @@
     });
 
     var router = new Router;
-    router.on('route:home', function() {
+    router.on('route:home', function () {
         // render user list
         userListView.render();
     })
-    router.on('route:edit', function(id) {
+    router.on('route:edit', function (id) {
         userEditView.render({id: id});
     })
     Backbone.history.start();
