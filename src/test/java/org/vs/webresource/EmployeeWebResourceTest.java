@@ -35,7 +35,7 @@ public class EmployeeWebResourceTest {
         BigInteger empId = BigInteger.ONE;
         when(employeeService.getEmployee(empId)).thenReturn(ObjectMotherEmployee.getEmployee(empId));
 
-        Employee employee = employeeWebResource.getEmployeeById(empId.toString());
+        Employee employee = employeeWebResource.getEmployeeById(empId.toString()).getBody();
         verify(employeeService).getEmployee(empId);
         assertEquals(empId, employee.getEmployeeId());
     }
@@ -61,7 +61,7 @@ public class EmployeeWebResourceTest {
 
         when(employeeService.getAllEmployees()).thenReturn(employeeList);
 
-        List result = employeeWebResource.getAllEmployees();
+        List result = employeeWebResource.getAllEmployees().getBody();
         verify(employeeService).getAllEmployees();
         assertEquals(employeeList.size(), result.size());
     }

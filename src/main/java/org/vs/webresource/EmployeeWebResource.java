@@ -1,6 +1,8 @@
 package org.vs.webresource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,18 +25,21 @@ public class EmployeeWebResource {
     }
 
     @RequestMapping(value = "/employee/{employeeId}", method = RequestMethod.GET)
-    public Employee getEmployeeById(@PathVariable String employeeId) {
-        return employeeService.getEmployee(new BigInteger(employeeId));
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable String employeeId) {
+        Employee employee = employeeService.getEmployee(new BigInteger(employeeId));
+        return new ResponseEntity<Employee>(employee, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/employee", method = RequestMethod.GET)
-    public List<Employee> getAllEmployees() {
-        return employeeService.getAllEmployees();
+    public ResponseEntity<List<Employee>> getAllEmployees() {
+        List<Employee> employeeList = employeeService.getAllEmployees();
+        return new ResponseEntity<List<Employee>>(employeeList, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/employee", method = RequestMethod.POST)
-    public void createEmployee(@RequestBody Employee employee) {
+    public ResponseEntity<Employee> createEmployee(@RequestBody Employee employee) {
         employeeService.createEmployee(employee);
+        return new ResponseEntity<Employee>(employee, HttpStatus.OK);
     }
 
 }
