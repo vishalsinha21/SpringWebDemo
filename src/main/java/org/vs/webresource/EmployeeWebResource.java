@@ -2,6 +2,7 @@ package org.vs.webresource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,6 +30,11 @@ public class EmployeeWebResource {
     @RequestMapping(value = "/employee", method = RequestMethod.GET)
     public List<Employee> getAllEmployees() {
         return employeeService.getAllEmployees();
+    }
+
+    @RequestMapping(value = "/employee", method = RequestMethod.POST)
+    public void createEmployee(@RequestBody Employee employee) {
+        employeeService.createEmployee(employee);
     }
 
 }

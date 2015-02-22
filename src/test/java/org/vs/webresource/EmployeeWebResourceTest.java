@@ -6,6 +6,7 @@ import org.mockito.Mock;
 import org.vs.domain.Employee;
 import org.vs.domain.ObjectMotherEmployee;
 import org.vs.service.EmployeeService;
+import org.vs.webresource.EmployeeWebResource;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -37,6 +38,15 @@ public class EmployeeWebResourceTest {
         Employee employee = employeeWebResource.getEmployeeById(empId.toString());
         verify(employeeService).getEmployee(empId);
         assertEquals(empId, employee.getEmployeeId());
+    }
+
+    @Test
+    public void should_create_employee() throws Exception {
+        BigInteger empId = BigInteger.ONE;
+        Employee employee = ObjectMotherEmployee.getEmployee(empId);
+
+        employeeWebResource.createEmployee(employee);
+        verify(employeeService).createEmployee(employee);
     }
 
     @Test

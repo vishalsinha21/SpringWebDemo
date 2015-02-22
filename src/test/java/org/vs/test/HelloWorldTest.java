@@ -2,6 +2,7 @@ package org.vs.test;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.vs.test.HelloWorld;
 
 import static org.junit.Assert.*;
 
