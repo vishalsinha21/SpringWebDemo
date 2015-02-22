@@ -30,6 +30,12 @@ public class EmployeeWebResource {
         return new ResponseEntity<Employee>(employee, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/employee/{employeeId}", method = RequestMethod.DELETE)
+    public ResponseEntity deleteEmployee(@PathVariable String employeeId) {
+        employeeService.deleteEmployee(new BigInteger(employeeId));
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/employee", method = RequestMethod.GET)
     public ResponseEntity<List<Employee>> getAllEmployees() {
         List<Employee> employeeList = employeeService.getAllEmployees();

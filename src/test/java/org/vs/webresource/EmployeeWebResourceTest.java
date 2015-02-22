@@ -41,6 +41,14 @@ public class EmployeeWebResourceTest {
     }
 
     @Test
+    public void should_delete_employee_by_id() throws Exception {
+        BigInteger empId = BigInteger.ONE;
+
+        employeeWebResource.deleteEmployee(empId.toString());
+        verify(employeeService).deleteEmployee(empId);
+    }
+
+    @Test
     public void should_create_employee() throws Exception {
         BigInteger empId = BigInteger.ONE;
         Employee employee = ObjectMotherEmployee.getEmployee(empId);
