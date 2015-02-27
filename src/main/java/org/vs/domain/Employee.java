@@ -7,11 +7,20 @@ import java.util.Date;
 
 public class Employee {
 
+    private String id;
     private BigInteger employeeId;
     private String firstName;
     private String lastName;
     private String phone;
     private LocalDate joiningDate;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public BigInteger getEmployeeId() {
         return employeeId;

@@ -3,14 +3,14 @@
 
 <head>
     <meta charset="utf-8">
-    <title>BackboneTutorials.com Beginner Video</title>
+    <title>Employee Management</title>
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.1/css/bootstrap.min.css">
 </head>
 
 <body>
 
 <div class="container">
-    <h1>User Manager</h1>
+    <h1>Employee Management</h1>
     <hr/>
     <div class="page"></div>
 </div>
@@ -51,11 +51,11 @@
     };
 
     var Users = Backbone.Collection.extend({
-        url: 'http://backbonejs-beginner.herokuapp.com/users'
+        url: 'http://localhost:8080/employee'
     });
 
     var User = Backbone.Model.extend({
-        urlRoot: 'http://backbonejs-beginner.herokuapp.com/users'
+        urlRoot: 'http://localhost:8080/employee'
     });
 
     var UserListView = Backbone.View.extend({
@@ -82,6 +82,7 @@
         saveUser: function (ev) {
             var userDetails = $(ev.currentTarget).serializeObject();
             var user = new User();
+            console.log(userDetails);
             user.save(userDetails, {
                 success: function (user) {
                     router.navigate('', {trigger: true});
@@ -90,10 +91,16 @@
             return false;
         },
         deleteUser: function (ev) {
+            var empId = this.user.get("employeeId");
+            //set id as employee id to make successful delete call with correct url
+            this.user.set("id", empId);
             this.user.destroy({
                 success: function () {
                     console.log('destroyed');
                     router.navigate('', {trigger: true});
+                },
+                error: function() {
+                    console.log('error');
                 }
             });
             return false;

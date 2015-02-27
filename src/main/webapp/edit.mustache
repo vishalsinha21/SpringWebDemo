@@ -3,15 +3,16 @@
         <form class="edit-user-form">
             <legend>Edit User</legend>
             <label>First Name</label>
-            <input name="firstname" type="text" value="{{firstname}}"/>
+            <input name="firstName" type="text" value="{{firstName}}"/>
             <label>Last Name</label>
-            <input name="lastname" type="text" value="{{lastname}}"/>
-            <label>Age</label>
-            <input name="age" type="text" value="{{age}}"/>
+            <input name="lastName" type="text" value="{{lastName}}"/>
+            <label>Phone</label>
+            <input name="phone" type="text" value="{{phone}}"/>
             <hr/>
             <button type="submit" class="btn">Update</button>
-            <input type="hidden" name="id" value="{{id}}"/>
-            <button data-user-id="{{id}}" class="btn btn-danger delete">Delete</button>
+            <input type="hidden" name="employeeId" value="{{employeeId}}"/>
+            <input type="hidden" name="id" value="{{employeeId}}"/>
+            <button data-user-id="{{employeeId}}" class="btn btn-danger delete">Delete</button>
         </form>
     {{/user}}
 </div>
