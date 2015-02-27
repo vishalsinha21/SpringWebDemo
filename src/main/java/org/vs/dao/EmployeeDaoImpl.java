@@ -53,6 +53,16 @@ public class EmployeeDaoImpl {
         jdbcTemplate.update(SQL, phoneNo, employeeId.longValue());
     }
 
+    public void updateEmployee(Employee employee) {
+        String SQL = "UPDATE Employee set firstname = ?, lastname = ?, phone = ?, joiningDate = ? where employeeId = ?";
+        jdbcTemplate.update(SQL,
+                employee.getFirstName(),
+                employee.getLastName(),
+                employee.getPhone(),
+                DaoUtils.convertToDateOrNull(employee.getJoiningDate()),
+                employee.getEmployeeId().longValue());
+    }
+
     public void deleteEmployee(BigInteger employeeId) {
         String SQL = "DELETE from Employee where employeeId = ?";
         jdbcTemplate.update(SQL, employeeId.longValue());

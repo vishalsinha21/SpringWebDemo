@@ -1,5 +1,6 @@
 package org.vs.dao;
 
+import org.joda.time.LocalDate;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,4 +87,25 @@ public class EmployeeDaoImplTest {
 
         assertTrue(empList.size() >= 3);
     }
+
+    @Test
+    public void should_update_employee_details_for_emp_id() {
+        Employee employee = ObjectMotherEmployee.getEmployee(BigInteger.ONE);
+        employeeDaoImpl.createEmployee(employee);
+
+        employee.setPhone("4564 64564");
+        employee.setFirstName("Steve");
+        employee.setLastName("Jobs");
+        employee.setJoiningDate(LocalDate.parse("2015-01-01"));
+        employeeDaoImpl.updateEmployee(employee);
+
+        Employee result = employeeDaoImpl.getEmployeeById(BigInteger.ONE);
+
+        assertEquals(employee.getEmployeeId(), result.getEmployeeId());
+        assertEquals(employee.getFirstName(), result.getFirstName());
+        assertEquals(employee.getLastName(), result.getLastName());
+        assertEquals(employee.getPhone(), result.getPhone());
+        assertEquals(employee.getJoiningDate().toString(), result.getJoiningDate().toString());
+    }
+
 }
