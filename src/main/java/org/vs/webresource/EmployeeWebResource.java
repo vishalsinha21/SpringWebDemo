@@ -48,4 +48,10 @@ public class EmployeeWebResource {
         return new ResponseEntity<Employee>(employee, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/employee", method = RequestMethod.PUT)
+    public ResponseEntity updateEmployee(@RequestBody Employee employee) {
+        employeeService.updateEmployee(employee);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
 }

@@ -37,4 +37,8 @@ public class EmployeeService {
     public List<Employee> getAllEmployees() {
         return employeeDaoImpl.getAllEmployees();
     }
+
+    public void updateEmployee(Employee employee) {
+        employeeDaoImpl.updateEmployee(employee);
+    }
 }
