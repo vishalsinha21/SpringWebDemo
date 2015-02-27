@@ -50,57 +50,56 @@
         return o;
     };
 
-    var Users = Backbone.Collection.extend({
+    var Employees = Backbone.Collection.extend({
         url: 'http://localhost:8080/employee'
     });
 
-    var User = Backbone.Model.extend({
+    var Employee = Backbone.Model.extend({
         urlRoot: 'http://localhost:8080/employee'
     });
 
-    var UserListView = Backbone.View.extend({
+    var EmployeeListView = Backbone.View.extend({
         el: '.page',
         render: function () {
             var that = this;
-            var users = new Users();
-            users.fetch({
-                success: function (users) {
-                    renderTemplate('list.mustache', {users: users.toJSON()}, that.$el);
+            var employees = new Employees();
+            employees.fetch({
+                success: function (employees) {
+                    renderTemplate('list.mustache', {employees: employees.toJSON()}, that.$el);
                 }
             })
         }
     });
 
-    var userListView = new UserListView();
+    var employeeListView = new EmployeeListView();
 
-    var UserEditView = Backbone.View.extend({
+    var EmployeeEditView = Backbone.View.extend({
         el: '.page',
         events: {
-            'submit .edit-user-form': 'saveUser',
-            'click .delete': 'deleteUser'
+            'submit .edit-employee-form': 'saveEmployee',
+            'click .delete': 'deleteEmployee'
         },
-        saveUser: function (ev) {
-            var userDetails = $(ev.currentTarget).serializeObject();
-            var user = new User();
-            console.log(userDetails);
-            user.save(userDetails, {
-                success: function (user) {
+        saveEmployee: function (ev) {
+            var employeeDetails = $(ev.currentTarget).serializeObject();
+            var employee = new Employee();
+            employee.save(employeeDetails, {
+                success: function (employee) {
                     router.navigate('', {trigger: true});
                 }
             });
             return false;
         },
-        deleteUser: function (ev) {
-            var empId = this.user.get("employeeId");
+        deleteEmployee: function (ev) {
+            var empId = this.employee.get("employeeId");
             //set id as employee id to make successful delete call with correct url
-            this.user.set("id", empId);
-            this.user.destroy({
+            this.employee.set("id", empId);
+            this.employee.destroy({
                 success: function () {
                     console.log('destroyed');
                     router.navigate('', {trigger: true});
                 },
                 error: function() {
-                    console.log('error');
+                    console.log('error while deleting');
                 }
             });
             return false;
@@ -108,10 +107,10 @@
         render: function (options) {
             var that = this;
             if (options.id) {
-                that.user = new User({id: options.id});
-                that.user.fetch({
-                    success: function (user) {
-                        renderTemplate('edit.mustache', {user: user.toJSON()}, that.$el);
+                that.employee = new Employee({id: options.id});
+                that.employee.fetch({
+                    success: function (employee) {
+                        renderTemplate('edit.mustache', {employee: employee.toJSON()}, that.$el);
                     }
                 })
             } else {
@@ -120,7 +119,7 @@
         }
     });
 
-    var userEditView = new UserEditView();
+    var employeeEditView = new EmployeeEditView();
 
     var Router = Backbone.Router.extend({
         routes: {
@@ -132,11 +131,11 @@
 
     var router = new Router;
     router.on('route:home', function () {
-        // render user list
-        userListView.render();
+        // render employee list
+        employeeListView.render();
     })
     router.on('route:edit', function (id) {
-        userEditView.render({id: id});
+        employeeEditView.render({id: id});
     })
     Backbone.history.start();
 

@@ -1,7 +1,7 @@
 <div>
-    {{#user}}
-        <form class="edit-user-form">
-            <legend>Edit User</legend>
+    {{#employee}}
+        <form class="edit-employee-form">
+            <legend>Edit Employee</legend>
             <label>First Name</label>
             <input name="firstName" type="text" value="{{firstName}}"/>
             <label>Last Name</label>
@@ -12,7 +12,7 @@
             <button type="submit" class="btn">Update</button>
             <input type="hidden" name="employeeId" value="{{employeeId}}"/>
             <input type="hidden" name="id" value="{{employeeId}}"/>
-            <button data-user-id="{{employeeId}}" class="btn btn-danger delete">Delete</button>
+            <button data-employee-id="{{employeeId}}" class="btn btn-danger delete">Delete</button>
         </form>
-    {{/user}}
+    {{/employee}}
 </div>
