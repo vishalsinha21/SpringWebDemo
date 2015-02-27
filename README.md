@@ -1,5 +1,26 @@
-Maven Spring Web Starter Project with:
+## Maven Spring Web Starter Project
 
 1. Jetty plugin as embedded server
 2. Derby Database integration
 3. Liquibase integration
+4. Spring Rest services for backend
+5. Backbone as frontend
+
+
+### First time setup
+- Install and start Derby DB
+- Update datasource properties in spring application context (/src/main/resources/spring/applicationContext.xml)
+- Navigate to project path in terminal and execute liquibase scripts to create DB and load data (mvn liquibase:update)
+- Build project and start jetty server (mci && mvn jetty:run)
+- Open application in browser using url (http://localhost:8080/)
+
+
+### Employee Manager
+
+#### REST services details
+- Get all employees: GET http://localhost:8080/employee
+- Get employee by Id: GET http://localhost:8080/employee/{employeeId}
+- Create new employee: POST http://localhost:8080/employee (with employee data)
+- Delete employee: DELETE http://localhost:8080/employee/{employeeId}
+- Update employee: PUT http://localhost:8080/employee/{employeeId} (with employee data)
+
