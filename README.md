@@ -5,7 +5,7 @@
 3. Liquibase integration
 4. Spring Rest services for backend
 5. Backbone as frontend
-
+6. Mustache templates
 
 ### First time setup
 - Install and start Derby DB
@@ -20,7 +20,7 @@
 #### REST services details
 - Get all employees: GET http://localhost:8080/employee
 - Get employee by Id: GET http://localhost:8080/employee/{employeeId}
-- Create new employee: POST http://localhost:8080/employee (with employee data)
+- Create new employee (with employee data): POST http://localhost:8080/employee
 - Delete employee: DELETE http://localhost:8080/employee/{employeeId}
-- Update employee: PUT http://localhost:8080/employee/{employeeId} (with employee data)
+- Update employee (with employee data): PUT http://localhost:8080/employee/{employeeId}
 
