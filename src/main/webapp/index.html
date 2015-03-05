@@ -22,10 +22,10 @@
 
 
 <script>
+    //helper functions
     function htmlEncode(value) {
         return $('<div/>').text(value).html();
     }
-
     function renderTemplate(template, model, el) {
         $.get(template, function (doc) {
             templateString = doc.documentElement.innerHTML
@@ -33,7 +33,6 @@
             el.html(rendered);
         });
     }
-
     $.fn.serializeObject = function () {
         var o = {};
         var a = this.serializeArray();
@@ -128,7 +127,6 @@
             "new": "edit"
         }
     });
-
     var router = new Router;
     router.on('route:home', function () {
         // render employee list

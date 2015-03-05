@@ -6,6 +6,7 @@
 4. Spring Rest services for backend
 5. Backbone as frontend
 6. Mustache templates
+7. Twitter Bootstrap for styling
 
 ### First time setup
 - Install and start Derby DB
