@@ -4,7 +4,7 @@
 2. Derby Database integration
 3. Liquibase integration
 4. Spring Rest services for backend
-5. Backbone as frontend
+5. Backbone as frontend (CRUD example)
 6. Mustache templates
 7. Twitter Bootstrap for styling
 
@@ -12,7 +12,7 @@
 - Install and start Derby DB
 - Update datasource properties in spring application context (/src/main/resources/spring/applicationContext.xml)
 - Navigate to project path in terminal and execute liquibase scripts to create DB and load data (mvn liquibase:update)
-- Build project and start jetty server (mci && mvn jetty:run)
+- Build project and start jetty server (mvn clean install && mvn jetty:run)
 - Open application in browser using url (http://localhost:8080/)
 
 
