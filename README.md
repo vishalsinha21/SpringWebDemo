@@ -26,6 +26,10 @@
 
 
 #### Main Page
+![Main Page](/src/main/resources/screenshots/mainPage.png?raw=true)
+
+#### Create Page
 ![Main Page](/src/main/resources/screenshots/createPage.png?raw=true)
 
-
+#### Edit Page
+![Main Page](/src/main/resources/screenshots/editPage.png?raw=true)
