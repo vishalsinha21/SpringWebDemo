@@ -25,6 +25,12 @@
             <column name="Phone">+91 8342342345</column>
             <column name="JoiningDate" valueDate="2004-07-07"/>
         </insert>
+        
+        <rollback>
+            <sql>
+                delete from Employee where EmployeeId in (1000001, 1000002, 1000003)
+            </sql>
+        </rollback>
     </changeSet>
 
 </databaseChangeLog>
