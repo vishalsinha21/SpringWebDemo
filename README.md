@@ -1,7 +1,7 @@
 ## Maven Spring Web Starter Project
 
 1. Jetty plugin as embedded server
-2. Derby Database integration
+2. In Memory Derby Database
 3. Liquibase integration
 4. Spring Rest services for backend
 5. Backbone as frontend (CRUD example)
@@ -9,11 +9,11 @@
 7. Twitter Bootstrap for styling
 
 ### First time setup
-- Install and start Derby DB
-- Update datasource properties in spring application context (/src/main/resources/spring/applicationContext.xml)
-- Navigate to project path in terminal and execute liquibase scripts to create DB and load data (mvn liquibase:update)
-- Build project and start jetty server (mvn clean install && mvn jetty:run)
-- Open application in browser using url (http://localhost:8080/)
+- Clone project
+- Navigate to project path in terminal and execute **mvn inmemdb:run** to start Derby database server
+- Navigate to project path in terminal and execute **mvn liquibase:update** to run liquibase scripts to create DB and load data
+- Build project and start jetty server by executing **mvn clean install && mvn jetty:run**
+- Open application in browser using url **http://localhost:8080/**
 
 
 ### Employee Manager
