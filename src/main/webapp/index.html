@@ -52,11 +52,11 @@
 
     //Model
     var Employees = Backbone.Collection.extend({
-        url: 'http://localhost:8080/employee'
+        url: '/employee'
     });
 
     var Employee = Backbone.Model.extend({
-        urlRoot: 'http://localhost:8080/employee'
+        urlRoot: '/employee'
     });
 
     //List View
