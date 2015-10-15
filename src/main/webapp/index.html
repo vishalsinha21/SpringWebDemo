@@ -84,8 +84,12 @@
             var employeeDetails = $(ev.currentTarget).serializeObject();
             var employee = new Employee();
             employee.save(employeeDetails, {
+                dataType: 'text',
                 success: function (employee) {
                     router.navigate('', {trigger: true});
+                },
+                error: function() {
+                    console.log('error while saving');
                 }
             });
             return false;
@@ -95,6 +99,7 @@
             //set id as employee id to make successful delete call with correct url
             this.employee.set("id", empId);
             this.employee.destroy({
+                dataType: 'text',
                 success: function () {
                     console.log('destroyed');
                     router.navigate('', {trigger: true});
