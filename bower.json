@@ -1,0 +1,10 @@
+{
+  "name": "explore-bower",
+  "version": "0.0.1",
+  "dependencies": {
+    "backbone": "latest",
+    "jquery": "2.1.4",
+    "mustache.js": "mustache#~2.2.0",
+    "bootstrap": "~3.3.5"
+  }
+}
