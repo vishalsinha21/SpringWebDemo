@@ -131,6 +131,12 @@
             <artifactId>liquibase-core</artifactId>
             <version>3.3.2</version>
         </dependency>
+        <!-- Jawr -->
+        <dependency>
+            <groupId>net.jawr</groupId>
+            <artifactId>jawr-core</artifactId>
+            <version>3.8</version>
+        </dependency>
     </dependencies>
 
     <build>

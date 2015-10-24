@@ -1,10 +1,12 @@
 <!doctype html>
+<%@ taglib uri="http://jawr.net/tags" prefix="jwr" %>
+
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <title>Employee Management</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <jwr:style src="/bundles/bootstrap.css"/>
 </head>
 
 <body>
@@ -21,10 +23,7 @@
 
 </body>
 
-<script src="js/lib/mustache.min.js"></script>
-<script src="js/lib/jquery.min.js" type="text/javascript"></script>
-<script src="js/lib/underscore-min.js" type="text/javascript"></script>
-<script src="js/lib/backbone-min.js"></script>
-<script src="js/main.js"></script>
+<jwr:script src="/bundles/common.js"/>
+<jwr:script src="/bundles/main.js"/>
 
 </html> 
