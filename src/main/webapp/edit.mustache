@@ -2,12 +2,19 @@
     {{#employee}}
         <form class="edit-employee-form">
             <legend>Edit Employee</legend>
-            <label>First Name</label>
-            <input name="firstName" type="text" value="{{firstName}}"/>
-            <label>Last Name</label>
-            <input name="lastName" type="text" value="{{lastName}}"/>
-            <label>Phone</label>
-            <input name="phone" type="text" value="{{phone}}"/>
+
+            <div class="form-group">
+                <label>First Name</label>
+                <input name="firstName" class="form-control" type="text" value="{{firstName}}"/>
+            </div>
+            <div class="form-group">
+                <label>Last Name</label>
+                <input name="lastName" class="form-control" type="text" value="{{lastName}}"/>
+            </div>
+            <div class="form-group">
+                <label>Phone</label>
+                <input name="phone" class="form-control" type="text" value="{{phone}}"/>
+            </div>
             <hr/>
             <button type="submit" class="btn">Update</button>
             <input type="hidden" name="employeeId" value="{{employeeId}}"/>

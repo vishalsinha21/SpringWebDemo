@@ -11,3 +11,4 @@ target/
 *.log
 testdb/
 misc/
+bower_components/
