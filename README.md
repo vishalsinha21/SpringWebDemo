@@ -34,3 +34,7 @@
 
 #### Edit Page
 ![Main Page](/src/main/resources/screenshots/editPage.png?raw=true)
+
+#### JaCoCo code coverage
+- running `mv clean install` will create binary report `target/jacoco.exec`
+- running `mvn jacoco:report` will create report in readable format. You can open `target\site\index.html` and check coverage and drill down to class.

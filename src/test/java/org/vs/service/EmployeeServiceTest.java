@@ -39,6 +39,15 @@ public class EmployeeServiceTest {
     }
 
     @Test
+    public void should_update_employee() throws Exception {
+        Employee employee = ObjectMotherEmployee.getEmployee(BigInteger.ONE);
+
+        employeeService.updateEmployee(employee);
+
+        verify(employeeDaoMock).updateEmployee(employee);
+    }
+
+    @Test
     public void should_get_employee_for_employee_id() throws Exception {
         Employee employee = ObjectMotherEmployee.getEmployee(BigInteger.ONE);
         when(employeeDaoMock.getEmployeeById(BigInteger.ONE)).thenReturn(employee);
